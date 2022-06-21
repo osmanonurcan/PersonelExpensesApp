@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:personal_expenses_app/models/transaction.dart';
+import 'package:personal_expenses_app/widgets/transactionItem.dart';
 
 class TransactionList extends StatelessWidget {
   final List<Transaction> transactions;
@@ -37,46 +37,8 @@ class TransactionList extends StatelessWidget {
           }))
         : ListView.builder(
             itemBuilder: (context, index) {
-              return Card(
-                margin:
-                    const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                elevation: 6,
-                child: ListTile(
-                  trailing: MediaQuery.of(context).size.width > 460
-                      ? FlatButton.icon(
-                          onPressed: (() => deleteTx(transactions[index].id)),
-                          icon: const Icon(
-                            Icons.delete,
-                          ),
-                          label: const Text("Delete"),
-                          textColor: Theme.of(context).errorColor,
-                        )
-                      : IconButton(
-                          onPressed: (() => deleteTx(transactions[index].id)),
-                          icon: Icon(
-                            Icons.delete,
-                            color: Theme.of(context).errorColor,
-                          ),
-                        ),
-                  leading: CircleAvatar(
-                    radius: 30,
-                    child: Padding(
-                      padding: const EdgeInsets.all(6.0),
-                      child: FittedBox(
-                        child: Text(
-                          "\$${transactions[index].amount}",
-                        ),
-                      ),
-                    ),
-                  ),
-                  title: Text(
-                    transactions[index].title,
-                    style: Theme.of(context).textTheme.headline6,
-                  ),
-                  subtitle:
-                      Text(DateFormat.yMMMd().format(transactions[index].date)),
-                ),
-              );
+              return TransactionItem(
+                  deleteTx: deleteTx, transaction: transactions[index]);
             },
             itemCount: transactions.length,
           );
