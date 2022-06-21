@@ -21,17 +21,17 @@ class MyApp extends StatelessWidget {
         accentColor: Colors.amber,
         fontFamily: "Quicksand",
         textTheme: ThemeData.light().textTheme.copyWith(
-              headline6: TextStyle(
+              headline6: const TextStyle(
                 fontFamily: "OpenSans",
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),
-              button: TextStyle(
+              button: const TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
               ),
             ),
-        appBarTheme: AppBarTheme(
+        appBarTheme: const AppBarTheme(
           titleTextStyle: TextStyle(
             fontFamily: "OpenSans",
             fontSize: 20,
@@ -106,25 +106,25 @@ class _MyHomePageState extends State<MyHomePage> {
     final isLandscape = mediaQuery.orientation == Orientation.landscape;
     final PreferredSizeWidget appBar = Platform.isIOS
         ? CupertinoNavigationBar(
-            middle: Text("Personel Expenses"),
+            middle: const Text("Personel Expenses"),
             trailing: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 GestureDetector(
-                  child: Icon(CupertinoIcons.add),
+                  child: const Icon(CupertinoIcons.add),
                   onTap: () => startAddNewTransaction(context),
                 ),
               ],
             ),
           )
         : AppBar(
-            title: Text(
+            title: const Text(
               "Personel Expenses",
             ),
             actions: [
               IconButton(
                   onPressed: () => startAddNewTransaction(context),
-                  icon: Icon(Icons.add))
+                  icon: const Icon(Icons.add))
             ],
           );
     final pageBody = SafeArea(
@@ -200,7 +200,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ? Container()
                 : FloatingActionButton(
                     onPressed: () => startAddNewTransaction(context),
-                    child: Icon(Icons.add),
+                    child: const Icon(Icons.add),
                   ),
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerFloat,

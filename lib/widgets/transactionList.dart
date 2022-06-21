@@ -38,16 +38,17 @@ class TransactionList extends StatelessWidget {
         : ListView.builder(
             itemBuilder: (context, index) {
               return Card(
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                 elevation: 6,
                 child: ListTile(
                   trailing: MediaQuery.of(context).size.width > 460
                       ? FlatButton.icon(
                           onPressed: (() => deleteTx(transactions[index].id)),
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.delete,
                           ),
-                          label: Text("Delete"),
+                          label: const Text("Delete"),
                           textColor: Theme.of(context).errorColor,
                         )
                       : IconButton(
